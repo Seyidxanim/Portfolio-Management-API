@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: 1
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+
+  liquibase:
+    change-log: classpath:/liquibase/changelog-master.yml
+
+
+#security:
+#  jwt:
+#    secret-key: 7f9a2c1b8d6e4f3a9c2b1e0d8f6a4c3b2d1e9f8a7b6c5d4e3f2a1b0c9d8e7f6
+#    expiration-time: 86400000
+
+#redis:
+#  server:
+#    urls: redis://localhost:6379
+#
+
