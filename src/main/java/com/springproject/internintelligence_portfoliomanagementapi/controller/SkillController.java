@@ -22,7 +22,6 @@ import static org.springframework.http.HttpStatus.NO_CONTENT;
 public class SkillController {
     private final SkillService skillService;
 
-
     @GetMapping("/portfolio/{portfolioId}")
     public List<SkillResponse> getAll(@PathVariable Long portfolioId) {
         return skillService.getAllByPortfolio(portfolioId);

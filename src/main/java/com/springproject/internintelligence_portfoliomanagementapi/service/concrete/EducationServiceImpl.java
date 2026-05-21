@@ -68,6 +68,7 @@ public class EducationServiceImpl implements EducationService {
                 .map(educationMapper::toResponse)
                 .toList();
     }
+
     @CacheEvict(value = "educations", allEntries = true)
     @Override
     public EducationResponse updateEducation(Long id, EducationRequest request) {
@@ -79,6 +80,7 @@ public class EducationServiceImpl implements EducationService {
         log.info("Education with id {} updated successfully", id);
         return educationMapper.toResponse(update);
     }
+
     @CacheEvict(value = "educations", allEntries = true)
     @Override
     public void deleteEducation(Long id) {

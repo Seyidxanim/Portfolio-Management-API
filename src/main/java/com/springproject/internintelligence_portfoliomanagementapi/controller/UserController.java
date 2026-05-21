@@ -18,27 +18,26 @@ import static org.springframework.http.HttpStatus.NO_CONTENT;
 public class UserController {
     private final UserService userService;
 
-
     @GetMapping("/{id}")
-    public UserResponse getById(@PathVariable Long id){
+    public UserResponse getById(@PathVariable Long id) {
         return userService.getById(id);
     }
 
     @GetMapping()
     @PreAuthorize("hasRole('ADMIN')")
-    public List<UserResponse> getUsers(){
+    public List<UserResponse> getUsers() {
         return userService.getUsers();
     }
 
     @PutMapping("/{id}")
     public UserResponse update(@PathVariable Long id,
-                              @Valid @RequestBody UpdateUserRequest request){
-        return userService.update(id,request);
+                               @Valid @RequestBody UpdateUserRequest request) {
+        return userService.update(id, request);
     }
 
     @ResponseStatus(NO_CONTENT)
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id){
+    public void delete(@PathVariable Long id) {
         userService.delete(id);
     }
 }

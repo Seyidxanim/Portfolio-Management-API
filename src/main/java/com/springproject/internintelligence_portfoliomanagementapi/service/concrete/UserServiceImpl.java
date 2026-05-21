@@ -36,13 +36,10 @@ public class UserServiceImpl implements UserService {//changepasvord met yaz
     public UserResponse getById(Long id) {
         log.info("Fetching user with id: {}", id);
 
-        var user = userRepository.findById(id)
-                .orElseThrow(() -> {
-                    log.error("User not found with id: {}", id);
-                    return new NotFoundException(
-                            USER_NOT_FOUND.getCode(),
-                            USER_NOT_FOUND.getMessage().formatted(id));
-                });
+        var user = userRepository.findById(id).orElseThrow(() -> {
+            log.error("User not found with id: {}", id);
+            return new NotFoundException(USER_NOT_FOUND.getCode(), USER_NOT_FOUND.getMessage().formatted(id));
+        });
 
         return userMapper.toResponse(user);
 
@@ -53,9 +50,7 @@ public class UserServiceImpl implements UserService {//changepasvord met yaz
     public List<UserResponse> getUsers() {
         log.info("Fetching all users");
         List<User> users = userRepository.findAll();
-        return users.stream()
-                .map(userMapper::toResponse)
-                .toList();
+        return users.stream().map(userMapper::toResponse).toList();
     }
 
     @CacheEvict(value = {"users", "users_list"}, allEntries = true)
@@ -84,16 +79,12 @@ public class UserServiceImpl implements UserService {//changepasvord met yaz
 
         String currentEmail = SecurityUtils.getCurrentUserEmail();
 
-        return userRepository.findByEmail(currentEmail)
-                .orElseThrow(() -> {
+        return userRepository.findByEmail(currentEmail).orElseThrow(() -> {
 
-                    log.error("Current user not found with email: {}", currentEmail);
+            log.error("Current user not found with email: {}", currentEmail);
 
-                    return new NotFoundException(
-                            USER_NOT_FOUND.getCode(),
-                            "User with email %s not found".formatted(currentEmail)
-                    );
-                });
+            return new NotFoundException(USER_NOT_FOUND.getCode(), "User with email %s not found".formatted(currentEmail));
+        });
     }
 
     private void checkUserOwnership(Long id) {
@@ -102,14 +93,9 @@ public class UserServiceImpl implements UserService {//changepasvord met yaz
 
         if (!currentUser.getId().equals(id)) {
 
-            log.warn("User {} tried to access another user's account with id: {}",
-                    currentUser.getId(),
-                    id);
+            log.warn("User {} tried to access another user's account with id: {}", currentUser.getId(), id);
 
-            throw new ForbiddenException(
-                    FORBIDDEN.getMessage(),
-                    FORBIDDEN.getCode()
-            );
+            throw new ForbiddenException(FORBIDDEN.getMessage(), FORBIDDEN.getCode());
         }
     }
 
