@@ -17,13 +17,18 @@ spring:
     change-log: classpath:/liquibase/changelog-master.yml
 
 
-#security:
-#  jwt:
-#    secret-key: 7f9a2c1b8d6e4f3a9c2b1e0d8f6a4c3b2d1e9f8a7b6c5d4e3f2a1b0c9d8e7f6
-#    expiration-time: 86400000
+    #security:
+    #  jwt:
+    #    secret-key: 7f9a2c1b8d6e4f3a9c2b1e0d8f6a4c3b2d1e9f8a7b6c5d4e3f2a1b0c9d8e7f6
+    #    expiration-time: 86400000
 
-#redis:
-#  server:
-#    urls: redis://localhost:6379
-#
+    #redis:
+    #  server:
+    #    urls: redis://localhost:6379
+    #
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
 

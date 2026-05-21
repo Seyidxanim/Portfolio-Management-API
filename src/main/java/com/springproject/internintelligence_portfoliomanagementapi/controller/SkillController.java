@@ -23,7 +23,7 @@ public class SkillController {
     private final SkillService skillService;
 
 
-    @GetMapping("/portdolio/{portfolioId}")
+    @GetMapping("/portfolio/{portfolioId}")
     public List<SkillResponse> getAll(@PathVariable Long portfolioId) {
         return skillService.getAllByPortfolio(portfolioId);
     }

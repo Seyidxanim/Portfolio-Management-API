@@ -22,7 +22,7 @@ public class PortfolioController {//update yoxdur
     @ResponseStatus(CREATED)
     @PostMapping("/{userId}")
     public PortfolioResponse createPortfolio(@PathVariable Long userId,
-                                    @Valid @RequestBody PortfolioRequest request) {
+                                             @Valid @RequestBody PortfolioRequest request) {
         return portfolioService.create(userId, request);
     }
 
@@ -36,9 +36,16 @@ public class PortfolioController {//update yoxdur
         return portfolioService.getById(id);
     }
 
+    @PutMapping("/{id}")
+    public PortfolioResponse update(@PathVariable Long id,
+                                    @Valid @RequestBody PortfolioRequest request) {
+
+        return portfolioService.update(id, request);
+    }
+
     @ResponseStatus(NO_CONTENT)
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id){
+    public void delete(@PathVariable Long id) {
         portfolioService.delete(id);
     }
 }

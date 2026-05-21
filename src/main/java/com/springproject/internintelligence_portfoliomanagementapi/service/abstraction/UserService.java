@@ -8,7 +8,6 @@ import com.springproject.internintelligence_portfoliomanagementapi.model.respons
 import java.util.List;
 
 public interface UserService {
-    UserResponse register(RegisterRequest request);
 
     UserResponse getById(Long id);
 
@@ -16,5 +15,5 @@ public interface UserService {
 
     void delete(Long id);
 
-    //String login(LoginRequest request);
+    List<UserResponse> getUsers();
 }

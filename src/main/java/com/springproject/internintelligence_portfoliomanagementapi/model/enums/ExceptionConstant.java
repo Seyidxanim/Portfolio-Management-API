@@ -32,7 +32,10 @@ public enum ExceptionConstant {
 
 
     INVALID_INPUT("INVALID_INPUT", "Invalid input data"),
-    INVALID_DATE_RANGE("INVALID_DATE_RANGE", "Start date cannot be after end date");
+    INVALID_DATE_RANGE("INVALID_DATE_RANGE", "Start date cannot be after end date"),
+
+
+    FORBIDDEN("FORBIDDEN", "You do not have permission to perform this action");
 
 
     String code;

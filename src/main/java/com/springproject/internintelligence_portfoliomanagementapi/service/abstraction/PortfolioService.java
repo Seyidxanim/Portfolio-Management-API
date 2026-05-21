@@ -11,5 +11,6 @@ public interface PortfolioService {
 
     List<PortfolioResponse> getAllByUser(Long userId);
     PortfolioResponse getById(Long id);
+    PortfolioResponse update(Long id, PortfolioRequest request);
     void delete(Long id);
 }
